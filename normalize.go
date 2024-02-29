@@ -69,15 +69,17 @@ func normalizeNumbers(v any) any {
 	case float32:
 		return float64(v)
 	case []any:
+		cV := make([]any, len(v))
 		for i, x := range v {
-			v[i] = normalizeNumbers(x)
+			cV[i] = normalizeNumbers(x)
 		}
-		return v
+		return cV
 	case map[string]any:
+		cV := make(map[string]any)
 		for k, x := range v {
-			v[k] = normalizeNumbers(x)
+			cV[k] = normalizeNumbers(x)
 		}
-		return v
+		return cV
 	default:
 		return v
 	}
