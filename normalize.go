@@ -69,12 +69,14 @@ func normalizeNumbers(v any) any {
 	case float32:
 		return float64(v)
 	case []any:
+		// TMP
 		cV := make([]any, len(v))
 		for i, x := range v {
 			cV[i] = normalizeNumbers(x)
 		}
 		return cV
 	case map[string]any:
+		// TMP
 		cV := make(map[string]any)
 		for k, x := range v {
 			cV[k] = normalizeNumbers(x)
